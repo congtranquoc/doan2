@@ -19,7 +19,6 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
 import utils.fbr.FancyBorderRadius;
 import utils.shadow.ShadowRenderer;
 

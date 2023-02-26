@@ -4,7 +4,13 @@
  */
 package views;
 
+import controllers.LoginController;
+import dao.AccountDAO;
+import dao.AccountImpl;
+import db.SQLiteManager;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import models.account;
 
 /**
  *
@@ -135,6 +141,13 @@ public class Login extends javax.swing.JFrame {
        
         System.out.println("views.Login.btnSigninActionPerformed()");
         System.out.println(strUsername + " " + strPwd);
+        LoginController loginController = new LoginController(strUsername, strPwd);
+        boolean result = loginController.exeLogin();
+        if(result){
+             JOptionPane.showMessageDialog(this, "Login success");
+        } else {
+            JOptionPane.showMessageDialog(this, "Login failed");
+        }
     }//GEN-LAST:event_btnSigninActionPerformed
 
     /**
