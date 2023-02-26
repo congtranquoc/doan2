@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package views;
 
 import controllers.LoginController;
@@ -11,12 +7,15 @@ import db.SQLiteManager;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import models.account;
+import utils.swing.CustomLoadingUI;
 
 /**
  *
  * @author admin
  */
 public class Login extends javax.swing.JFrame {
+    
+    private LoginController loginController;
 
     /**
      * Creates new form Login
@@ -136,56 +135,25 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPwdActionPerformed
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
-       String strUsername = txtUsername.getText();
-       String strPwd = String.valueOf(txtPwd.getPassword());
-       
-        System.out.println("views.Login.btnSigninActionPerformed()");
-        System.out.println(strUsername + " " + strPwd);
-        LoginController loginController = new LoginController(strUsername, strPwd);
-        boolean result = loginController.exeLogin();
-        if(result){
-             JOptionPane.showMessageDialog(this, "Login success");
-        } else {
-            JOptionPane.showMessageDialog(this, "Login failed");
-        }
+        loginController = new LoginController(this);
+        loginController.control();
     }//GEN-LAST:event_btnSigninActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
+    public String getUsername(){
+        return txtUsername.getText();
     }
     
-
+    public String getPwd(){
+        return String.valueOf(txtPwd.getPassword());
+    }
+    
+    public void showError(String message){
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
+    public utils.swing.Button getButton(){
+        return btnSignin;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private resource.Background background;
     private utils.swing.Button btnSignin;

@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controllers;
 
 import dao.AccountImpl;
 import models.account;
+import views.Login;
 
 /**
  *
@@ -13,11 +11,11 @@ import models.account;
  */
 public class LoginController {
     private account ac;
+    private Login view;
     
-    public LoginController(String username, String pwd){
-        ac = new account();
-        ac.setUser_name(username);
-        ac.setPwd(pwd);
+    public LoginController(Login view){
+        this.ac = new account();
+        this.view = view;
     }
     
     public boolean exeLogin(){
@@ -25,4 +23,27 @@ public class LoginController {
         return aci.authenticateUser(ac);
     }
     
+    public boolean validateForm(String user, String pwd){
+        if (user.isBlank() || pwd.isBlank()){
+            return false;
+        } else {
+            ac.setUser_name(user);
+            ac.setPwd(pwd);
+            return true;
+        }
+    }
+    
+    public void control(){
+        String user = view.getUsername();
+        String pwd = view.getPwd();
+        if(!validateForm(user, pwd)){
+            view.showError("Username or Pwd is bank");
+        } else {
+            if(exeLogin()){
+                view.showError("Success");
+            } else {
+                view.showError("Username or Pwd is not valid");
+            }
+        }
+    }
 }
