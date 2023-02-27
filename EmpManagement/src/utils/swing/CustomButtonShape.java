@@ -14,12 +14,12 @@ import utils.fbr.FancyBorderRadius;
  *
  * @author RAVEN
  */
-public class Button extends JButton {
+public class CustomButtonShape extends JButton {
 
     private Shape shape;
     private final RippleEffect rippleEffect;
 
-    public Button() {
+    public CustomButtonShape() {
         rippleEffect = new RippleEffect(this);
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(8, 5, 8, 5));

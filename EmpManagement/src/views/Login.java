@@ -40,7 +40,7 @@ public class Login extends javax.swing.JFrame {
         txtUsername = new utils.swing.TextField();
         txtPwd = new utils.swing.PasswordField();
         jLabel1 = new javax.swing.JLabel();
-        btnSignin = new utils.swing.Button();
+        btnSignin = new utils.swing.CustomButtonShape();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -151,12 +151,12 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, message);
     }
     
-    public utils.swing.Button getButton(){
+    public utils.swing.CustomButtonShape getButton(){
         return btnSignin;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private resource.Background background;
-    private utils.swing.Button btnSignin;
+    private utils.swing.CustomButtonShape btnSignin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;
     private utils.swing.PasswordField txtPwd;
