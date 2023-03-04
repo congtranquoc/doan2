@@ -32,10 +32,8 @@ public class ModelMenu {
         this.subMenu = subMenu;
     }
 
-    public ModelMenu() {
-    }
 
-    public ModelMenu(Icon icon, String menuName, String[] subMenu) {
+    public ModelMenu(Icon icon, String menuName, String... subMenu) {
         this.icon = icon;
         this.menuName = menuName;
         this.subMenu = subMenu;

@@ -8,13 +8,14 @@ package components;
  *
  * @author admin
  */
-public class MainForm extends javax.swing.JPanel {
+public class Profile extends javax.swing.JPanel {
 
     /**
-     * Creates new form MainForm
+     * Creates new form Profile
      */
-    public MainForm() {
+    public Profile() {
         initComponents();
+        setOpaque(false);
     }
 
     /**
@@ -26,21 +27,32 @@ public class MainForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1 = new javax.swing.JLabel();
+
+        setForeground(new java.awt.Color(225, 225, 225));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(232, 232, 232));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/company.png"))); // NOI18N
+        jLabel1.setText("Company");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

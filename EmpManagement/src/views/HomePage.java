@@ -7,6 +7,8 @@ package views;
 import components.Header;
 import components.MainForm;
 import components.Menu;
+import event.EventMenuSelected;
+import java.awt.Color;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -21,6 +23,8 @@ public class HomePage extends javax.swing.JFrame {
     private MainForm main;
     public HomePage() {
         initComponents();
+        //Set Underdecorated. 
+        setBackground(new Color(0,0,0,0));
         init();
     }
 
@@ -30,6 +34,20 @@ public class HomePage extends javax.swing.JFrame {
         menu = new Menu();
         header = new Header();
         main = new MainForm();
+        menu.addEvent(new EventMenuSelected() {
+            @Override
+            public void menuSelected(int menuIndex, int subMenuIndex) {
+                System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
+                if (menuIndex == 0) {
+                    if (subMenuIndex == 0) {
+//                        main.showForm(new Form_Home());
+                    } else if (subMenuIndex == 1) {
+//                        main.showForm(new Form1());
+                    }
+                }
+            }
+        });
+        menu.initMenuItem();
         background.add(menu, "w 230!, spany 2");
         background.add(header, "h 50!, wrap");
         background.add(main, "w 100%, h 100%");
@@ -42,6 +60,7 @@ public class HomePage extends javax.swing.JFrame {
         background = new javax.swing.JLayeredPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         background.setBackground(new java.awt.Color(245, 245, 245));
         background.setOpaque(true);
@@ -50,7 +69,7 @@ public class HomePage extends javax.swing.JFrame {
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
