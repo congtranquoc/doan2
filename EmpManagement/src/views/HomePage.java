@@ -5,11 +5,20 @@
 package views;
 
 import components.Header;
-import components.MainForm;
+import form.MainForm;
 import components.Menu;
 import event.EventMenuSelected;
+import event.EventShowPopupMenu;
+import form.HomeForm;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
 import net.miginfocom.swing.MigLayout;
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTarget;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
+import utils.swing.MenuItem;
+import utils.swing.PopupMenu;
 
 /**
  *
@@ -21,6 +30,7 @@ public class HomePage extends javax.swing.JFrame {
     private Menu menu;
     private Header header;
     private MainForm main;
+    private Animator animator;
     public HomePage() {
         initComponents();
         //Set Underdecorated. 
@@ -40,17 +50,71 @@ public class HomePage extends javax.swing.JFrame {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
                     if (subMenuIndex == 0) {
-//                        main.showForm(new Form_Home());
+                        main.showForm(new HomeForm());
                     } else if (subMenuIndex == 1) {
 //                        main.showForm(new Form1());
                     }
                 }
             }
         });
+        menu.addEventShowPopupMenu((Component com) -> {
+            MenuItem item = (MenuItem) com;
+            PopupMenu popup = new PopupMenu(this, item.getWidth(), item.getEventSelected(), item.getMenu().getSubMenu());
+            int x = this.getX()+ 52;
+            int y = this.getY() + com.getY() + 86;
+            popup.setLocation(x, y);
+            popup.setVisible(true);
+            
+        });
         menu.initMenuItem();
         background.add(menu, "w 230!, spany 2");
         background.add(header, "h 50!, wrap");
         background.add(main, "w 100%, h 100%");
+        TimingTarget target = new TimingTarget() {
+            @Override
+            public void timingEvent(float frac) {
+                double widtth;
+                if(menu.isShowMenu()){
+                    widtth = 60 + (170*(1f-frac));
+                } else {
+                    widtth = 60 + (170 * frac);
+                }
+                
+                layout.setComponentConstraints(menu, "w " + widtth + "!, spany2");
+                menu.revalidate();
+            }
+
+            @Override
+            public void begin() {
+                System.out.println(".begin()");
+            }
+
+            @Override
+            public void end() {
+               menu.setShowMenu(!menu.isShowMenu());
+               menu.setEnableMenu(true);
+            }
+
+            @Override
+            public void repeat() {
+                System.out.println(".repeat()");
+            }
+        };
+        animator = new Animator(500, target);
+        animator.setResolution(0);
+        animator.setDeceleration(0.5f);
+        animator.setAcceleration(0.5f);
+        header.addMenuEvent((ActionEvent ae) -> {
+            if (!animator.isRunning()) {
+                animator.start();
+            }
+            menu.setEnableMenu(false);
+            if (menu.isShowMenu()) {
+                menu.hideAllMenu();
+            }
+        });
+        //Start with this form
+        main.showForm(new HomeForm());
     }
     
     @SuppressWarnings("unchecked")

@@ -3,6 +3,7 @@ package components;
 
 import event.EventMenu;
 import event.EventMenuSelected;
+import event.EventShowPopupMenu;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GradientPaint;
@@ -28,6 +29,7 @@ public class Menu extends javax.swing.JPanel {
     
 //    private final Animator animator;
     private EventMenuSelected event;
+    private EventShowPopupMenu eventShowPopupMenu;
     private boolean enableMenu = true;
     private boolean showMenu = true;
     private final MigLayout layout;
@@ -43,6 +45,16 @@ public class Menu extends javax.swing.JPanel {
     public void setShowMenu(boolean showMenu){
         this.showMenu = showMenu;
     }
+    
+    public boolean isShowMenu(){
+        return showMenu;
+    }
+
+    public void addEventShowPopupMenu(EventShowPopupMenu eventShowPopupMenu) {
+        this.eventShowPopupMenu = eventShowPopupMenu;
+    }
+    
+    
     
     public Menu() {
         initComponents();
@@ -89,11 +101,22 @@ public class Menu extends javax.swing.JPanel {
                         return true;
                     } else {
                         System.out.println(".menuPressed() show pop up menu -  Menu is closed");
+                        eventShowPopupMenu.showPopup(com);
                     }
                 }
                 return true;
             }
         };
+    }
+    
+    public void hideAllMenu(){
+        for (Component com : panel.getComponents()) {
+            MenuItem item = (MenuItem) com;
+            if (item.isOpen()) {
+                new MenuAnimation(layout, com, 500).closeMenu();
+                item.setOpen(false);
+            }
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

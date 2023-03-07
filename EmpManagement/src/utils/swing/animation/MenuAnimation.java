@@ -1,10 +1,8 @@
 package utils.swing.animation;
 
 import java.awt.Component;
-import javax.swing.Spring;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
-import org.jdesktop.animation.timing.TimingEventListener;
 import org.jdesktop.animation.timing.TimingTarget;
 import utils.swing.MenuItem;
 
@@ -28,6 +26,7 @@ public class MenuAnimation {
     public MenuAnimation(MigLayout layout, Component component, int duration) {
         this.layout = layout;
         this.menuItem = (MenuItem) component;
+        initAnimator(component, duration);
     }
 
     private void initAnimator(Component component, int duration) {

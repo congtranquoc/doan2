@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package components;
+package form;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -15,6 +19,16 @@ public class MainForm extends javax.swing.JPanel {
      */
     public MainForm() {
         initComponents();
+        setOpaque(false);
+        setLayout(new BorderLayout());
+        setBorder(new EmptyBorder(10,20,10,20));
+    }
+    
+    public void showForm(Component com){
+        removeAll();
+        add(com);
+        repaint();
+        revalidate();
     }
 
     /**
