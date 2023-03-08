@@ -4,10 +4,10 @@ import javax.swing.Icon;
 
 public class ModelCard {
 
-    String title;
-    double values;
-    int percent;
-    Icon icon;
+    private String title;
+    private double values;
+    private int percentage;
+    private Icon icon;
 
     public String getTitle() {
         return title;
@@ -25,12 +25,12 @@ public class ModelCard {
         this.values = values;
     }
 
-    public int getPercent() {
-        return percent;
+    public int getPercentage() {
+        return percentage;
     }
 
-    public void setPercent(int percent) {
-        this.percent = percent;
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
     }
 
     public Icon getIcon() {
@@ -41,15 +41,14 @@ public class ModelCard {
         this.icon = icon;
     }
 
-    public ModelCard(String title, double values, int percent, Icon icon) {
+    public ModelCard(String title, double values, int percentage, Icon icon) {
         this.title = title;
         this.values = values;
-        this.percent = percent;
+        this.percentage = percentage;
         this.icon = icon;
     }
 
     public ModelCard() {
     }
-    
-    
+
 }

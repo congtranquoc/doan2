@@ -25,7 +25,7 @@ public class SQLiteManager {
         try {
             SQLiteConfig config = new SQLiteConfig();
             config.setJournalMode(SQLiteConfig.JournalMode.WAL);
-            config.setBusyTimeout(5000);
+//            config.setBusyTimeout(5000);
             conn = DriverManager.getConnection(dbUrl);
             Statement stm = conn.createStatement();
             if(conn != null){

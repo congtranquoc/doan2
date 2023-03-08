@@ -10,6 +10,8 @@ import components.Menu;
 import event.EventMenuSelected;
 import event.EventShowPopupMenu;
 import form.HomeForm;
+import icon.GoogleMaterialDesignIcons;
+import icon.IconFontSwing;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -113,6 +115,8 @@ public class HomePage extends javax.swing.JFrame {
                 menu.hideAllMenu();
             }
         });
+//init google icon
+        IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //Start with this form
         main.showForm(new HomeForm());
     }
@@ -133,11 +137,11 @@ public class HomePage extends javax.swing.JFrame {
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 1330, Short.MAX_VALUE)
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
