@@ -1,8 +1,9 @@
 package controllers;
 
-import dao.AccountImpl;
+import dao.LoginDAO;
+import event.EventLoginListener;
 import javax.swing.SwingUtilities;
-import models.account;
+import models.LoginModel;
 import views.HomePage;
 import views.Login;
 
@@ -10,49 +11,39 @@ import views.Login;
  *
  * @author admin
  */
-public class LoginController {
+public class LoginController implements EventLoginListener {
 
-    private account ac;
+    private LoginModel loginModel;
+    private LoginDAO dao;
     private Login view;
 
-    public LoginController(Login view) {
-        this.ac = new account();
+    public LoginController(Login view, LoginDAO dao) {
+        this.loginModel = new LoginModel();
+        this.dao = dao;
         this.view = view;
+        view.addEventLoginListener(this);
     }
 
-    public boolean exeLogin() {
-        AccountImpl aci = new AccountImpl();
-        return aci.authenticateUser(ac);
-    }
+    @Override
+    public void executeLogin(String user, String pwd) {
 
-    public boolean validateForm(String user, String pwd) {
         if (user.isBlank() || pwd.isBlank()) {
-            return false;
+            System.out.println("controllers.LoginController.executeLogin() null" );
         } else {
-            ac.setUser_name(user);
-            ac.setPwd(pwd);
-            return true;
-        }
-    }
-
-    public void control() {
-        String user = view.getUsername();
-        String pwd = view.getPwd();
-        if (!validateForm(user, pwd)) {
-            view.showError("Username or Pwd is bank");
-        } else {
-            if (exeLogin()) {
-//                view.showError("Success");
-                /* Create and display the form */
-                view.dispose();
+            loginModel = dao.authenticateUser(user, pwd);
+            if (loginModel == null) {
+                System.out.println("controllers.LoginController.executeLogin() invalid");
+            } else {
+                System.out.println("controllers.LoginController.executeLogin() success");
+                
+                HomePage homeView = new HomePage(loginModel);
+                 /* Create and display the form */
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        new HomePage().setVisible(true);
-                        
+                        view.dispose();
+                        homeView.setVisible(true);
                     }
                 });
-            } else {
-                view.showError("Username or Pwd is not valid");
             }
         }
     }

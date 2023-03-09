@@ -4,6 +4,9 @@
  */
 package views;
 
+import controllers.LoginController;
+import dao.LoginDAO;
+import dao.LoginImpl;
 import javax.swing.SwingUtilities;
 
 /**
@@ -15,6 +18,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        Login view = new Login();
+        LoginDAO dao = new LoginImpl();
+        LoginController controller = new LoginController(view, dao);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -41,7 +47,7 @@ public class Main {
         /* Create and display the form */
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                view.setVisible(true);
             }
         });
     }

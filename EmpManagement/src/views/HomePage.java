@@ -15,6 +15,7 @@ import icon.IconFontSwing;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import models.LoginModel;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -22,10 +23,6 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import utils.swing.MenuItem;
 import utils.swing.PopupMenu;
 
-/**
- *
- * @author admin
- */
 public class HomePage extends javax.swing.JFrame {
 
     private MigLayout layout;
@@ -33,14 +30,15 @@ public class HomePage extends javax.swing.JFrame {
     private Header header;
     private MainForm main;
     private Animator animator;
-    public HomePage() {
+    private LoginModel login;
+
+    public HomePage(LoginModel login) {
+        this.login = login;
         initComponents();
-        //Set Underdecorated. 
-        setBackground(new Color(0,0,0,0));
         init();
     }
 
-    private void init(){
+    private void init() {
         layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
         background.setLayout(layout);
         menu = new Menu();
@@ -62,26 +60,27 @@ public class HomePage extends javax.swing.JFrame {
         menu.addEventShowPopupMenu((Component com) -> {
             MenuItem item = (MenuItem) com;
             PopupMenu popup = new PopupMenu(this, item.getWidth(), item.getEventSelected(), item.getMenu().getSubMenu());
-            int x = this.getX()+ 52;
+            int x = this.getX() + 52;
             int y = this.getY() + com.getY() + 86;
             popup.setLocation(x, y);
             popup.setVisible(true);
-            
+
         });
         menu.initMenuItem();
-        background.add(menu, "w 230!, spany 2");
+        background.add(menu, "w 230!, spany 2");    // Span Y 2cell
         background.add(header, "h 50!, wrap");
         background.add(main, "w 100%, h 100%");
         TimingTarget target = new TimingTarget() {
             @Override
             public void timingEvent(float frac) {
                 double widtth;
-                if(menu.isShowMenu()){
-                    widtth = 60 + (170*(1f-frac));
+                if (menu.isShowMenu()) {
+                    widtth = 60 + (170 * (1f - frac));
                 } else {
                     widtth = 60 + (170 * frac);
                 }
-                
+
+                System.out.println("views.HomePage.init() menu" + menu.getWidth());
                 layout.setComponentConstraints(menu, "w " + widtth + "!, spany2");
                 menu.revalidate();
             }
@@ -93,8 +92,8 @@ public class HomePage extends javax.swing.JFrame {
 
             @Override
             public void end() {
-               menu.setShowMenu(!menu.isShowMenu());
-               menu.setEnableMenu(true);
+                menu.setShowMenu(!menu.isShowMenu());
+                menu.setEnableMenu(true);
             }
 
             @Override
@@ -115,20 +114,23 @@ public class HomePage extends javax.swing.JFrame {
                 menu.hideAllMenu();
             }
         });
-//init google icon
+        
+        header.setTxtUserName(login.getUsername());
+        header.setTxtRole("Admin SYS");
+        //init google icon
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //Start with this form
         main.showForm(new HomeForm());
+        System.out.println("views.HomePage.init() menu" + menu.getWidth());
     }
-    
-    @SuppressWarnings("unchecked")
+
+//    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         background = new javax.swing.JLayeredPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         background.setBackground(new java.awt.Color(245, 245, 245));
         background.setOpaque(true);
@@ -159,40 +161,6 @@ public class HomePage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomePage().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane background;

@@ -127,6 +127,7 @@ public class Menu extends javax.swing.JPanel {
         profile1 = new components.Profile();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(230, 800));
 
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -166,13 +167,17 @@ public class Menu extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(sp, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint gra = new GradientPaint(0, 0, new Color(73, 0, 73), getWidth(), 0, new Color(191, 71, 72));
+//        GradientPaint gra = new GradientPaint(0, 0, new Color(73, 0, 73), getWidth(), 0, new Color(191, 71, 72));
+        
+        GradientPaint gra = new GradientPaint(0, 0, new Color(77, 68, 111), getWidth(), 0, new Color(112, 102, 149));
         g2.setPaint(gra);
         g2.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(g); 

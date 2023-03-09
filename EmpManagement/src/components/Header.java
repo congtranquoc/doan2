@@ -2,10 +2,10 @@
 package components;
 
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 
 
 public class Header extends javax.swing.JPanel {
-
 
     public Header() {
         initComponents();
@@ -87,4 +87,12 @@ public class Header extends javax.swing.JPanel {
     private javax.swing.JLabel txtRole;
     private javax.swing.JLabel txtUserName;
     // End of variables declaration//GEN-END:variables
+
+    public void setTxtRole(String text) {
+        this.txtRole.setText(text);
+    }
+
+    public void setTxtUserName(String text) {
+        this.txtUserName.setText(text);
+    }
 }

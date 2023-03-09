@@ -95,7 +95,7 @@ public class MenuItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(191, 71, 72));
+        setBackground(new java.awt.Color(71, 67, 67));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,7 +116,7 @@ public class MenuItem extends javax.swing.JPanel {
         
         Graphics2D g2 = (Graphics2D)g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint gra = new GradientPaint(0, 0, new Color(73, 0, 73), getWidth(), 0, new Color(191, 71, 72));
+        GradientPaint gra = new GradientPaint(0, 0, new Color(71, 67, 67), getWidth(), 0, new Color(71, 67, 67));
         g2.setPaint(gra);
 //        g2.setColor(new Color(191,71,72));
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
