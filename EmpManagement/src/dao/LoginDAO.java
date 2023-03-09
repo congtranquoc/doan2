@@ -5,7 +5,6 @@
 package dao;
 
 import models.LoginModel;
-import models.account;
 
 /**
  *
