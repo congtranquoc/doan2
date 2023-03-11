@@ -25,7 +25,7 @@ public class MainForm extends javax.swing.JPanel {
     }
     
     public void showForm(Component com){
-        removeAll();
+        removeAll();  
         add(com);
         repaint();
         revalidate();

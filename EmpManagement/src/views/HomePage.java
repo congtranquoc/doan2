@@ -8,18 +8,15 @@ import components.Header;
 import form.MainForm;
 import components.Menu;
 import event.EventMenuSelected;
-import event.EventShowPopupMenu;
 import form.HomeForm;
 import icon.GoogleMaterialDesignIcons;
 import icon.IconFontSwing;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import models.LoginModel;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
-import org.jdesktop.animation.timing.TimingTargetAdapter;
 import utils.swing.MenuItem;
 import utils.swing.PopupMenu;
 
