@@ -1,6 +1,8 @@
 package MVC.views;
 
 import event.EventLoginListener;
+import icon.GoogleMaterialDesignIcons;
+import icon.IconFontSwing;
 import java.awt.Color;
 
 /**
@@ -15,6 +17,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         //Set Underdecorated. 
         setBackground(new Color(0, 0, 0, 0));
+        //init google icon
+        IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
     }
 
     @SuppressWarnings("unchecked")

@@ -6,6 +6,7 @@ import javax.swing.SwingUtilities;
 import MVC.models.LoginModel;
 import MVC.views.HomePage;
 import MVC.views.Login;
+import dialog.ErrorDialog;
 
 /**
  *
@@ -28,11 +29,11 @@ public class LoginController implements EventLoginListener {
     public void executeLogin(String user, String pwd) {
 
         if (user.isBlank() || pwd.isBlank()) {
-            System.out.println("controllers.LoginController.executeLogin() null" );
+            showDialogError("Usename and Pasword are required!");
         } else {
             loginModel = dao.authenticateUser(user, pwd);
             if (loginModel == null) {
-                System.out.println("controllers.LoginController.executeLogin() invalid");
+                showDialogError("Username and Password are invalid");
             } else {
                 System.out.println("controllers.LoginController.executeLogin() success");
                 
@@ -46,6 +47,11 @@ public class LoginController implements EventLoginListener {
                 });
             }
         }
+    }
+    
+    private void showDialogError(String msg){
+        ErrorDialog dialog = new ErrorDialog(view, true);
+        dialog.showMessage(msg);
     }
     
     public void showView(){
