@@ -80,6 +80,7 @@ public class ErrorDialog extends javax.swing.JDialog {
         lbIcon = new javax.swing.JLabel();
         lbMess = new javax.swing.JLabel();
         btnOK = new utils.swing.CustomButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -97,7 +98,7 @@ public class ErrorDialog extends javax.swing.JDialog {
         lbMess.setText("Informartion");
         lbMess.setToolTipText("");
 
-        btnOK.setBackground(new java.awt.Color(0, 153, 51));
+        btnOK.setBackground(new java.awt.Color(255, 0, 0));
         btnOK.setForeground(new java.awt.Color(255, 255, 255));
         btnOK.setText("OK");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +126,8 @@ public class ErrorDialog extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(lbIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbMess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lbMess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSeparator1))
                 .addContainerGap())
         );
         panelErrorLayout.setVerticalGroup(
@@ -133,6 +135,8 @@ public class ErrorDialog extends javax.swing.JDialog {
             .addGroup(panelErrorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbTitleError)
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,6 +167,7 @@ public class ErrorDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private utils.swing.CustomButton btnOK;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbIcon;
     private javax.swing.JLabel lbMess;
     private javax.swing.JLabel lbTitleError;
