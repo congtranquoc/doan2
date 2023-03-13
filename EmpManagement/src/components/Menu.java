@@ -11,7 +11,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
-import models.ModelMenu;
+import MVC.models.ModelMenu;
 import net.miginfocom.swing.MigLayout;
 import utils.swing.MenuItem;
 import utils.swing.ScrollBarCustom;

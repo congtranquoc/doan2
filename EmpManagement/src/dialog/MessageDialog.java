@@ -7,10 +7,14 @@ package dialog;
 import icon.GoogleMaterialDesignIcons;
 import icon.IconFontSwing;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import javax.swing.JDialog;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+import org.jdesktop.animation.timing.interpolation.SplineInterpolator;
 import utils.swing.CustomButton;
 
 /**
@@ -55,6 +59,7 @@ public class MessageDialog extends JDialog{
 
         };
         animator = new Animator(200, target);
+//        animator.setInterpolator(new SplineInterpolator(0.5f));
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
     }
@@ -64,6 +69,18 @@ public class MessageDialog extends JDialog{
         animator.start();
         setVisible(true);
     }
+
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        g2.setColor(new Color(50,50,50));
+        g2.fillRect(0,0,getWidth(), getHeight());
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

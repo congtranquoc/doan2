@@ -1,11 +1,11 @@
-package controllers;
+package MVC.controllers;
 
 import dao.LoginDAO;
 import event.EventLoginListener;
 import javax.swing.SwingUtilities;
-import models.LoginModel;
-import views.HomePage;
-import views.Login;
+import MVC.models.LoginModel;
+import MVC.views.HomePage;
+import MVC.views.Login;
 
 /**
  *
@@ -46,5 +46,9 @@ public class LoginController implements EventLoginListener {
                 });
             }
         }
+    }
+    
+    public void showView(){
+        view.setVisible(true);
     }
 }

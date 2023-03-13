@@ -1,5 +1,5 @@
 
-package models;
+package MVC.models;
 
 import java.awt.Color;
 

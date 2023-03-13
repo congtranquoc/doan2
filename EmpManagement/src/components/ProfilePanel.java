@@ -1,7 +1,7 @@
 
 package components;
 
-import models.ModelProfile;
+import MVC.models.ModelProfile;
 
 public class ProfilePanel extends javax.swing.JPanel {
 
@@ -9,7 +9,7 @@ public class ProfilePanel extends javax.swing.JPanel {
     public ProfilePanel(ModelProfile data) {
         initComponents();
         imageEmp.setIcon(data.getIcon());
-        lableEmpName.setText(data.getName());
+        lableEmpName.setText(data.getFname() + " " + data.getLname());
     }
 
 

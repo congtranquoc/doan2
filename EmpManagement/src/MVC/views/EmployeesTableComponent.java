@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package utils.swing;
+package MVC.views;
 
 import components.ActionPanel;
 import components.ProfilePanel;
@@ -16,16 +12,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
-import models.ModelAction;
-import models.ModelProfile;
+import MVC.models.ModelAction;
+import MVC.models.ModelProfile;
+import utils.swing.ScrollBarCustom;
+import utils.swing.TableCellAction;
+import utils.swing.TableHeader;
 
-/**
- *
- * @author admin
- */
-public class CustomTable extends JTable {
+public class EmployeesTableComponent extends JTable {
 
-    public CustomTable() {
+    public EmployeesTableComponent() {
         setShowHorizontalLines(true);
         setGridColor(new Color(230, 230, 230));
         setRowHeight(40);
@@ -79,16 +74,14 @@ public class CustomTable extends JTable {
 
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
-        
-        if(col == 4){
+
+        if (col == 4) {
             return new TableCellAction();
         } else {
-            return super.getCellEditor(row,col); 
+            return super.getCellEditor(row, col);
         }
-        
+
     }
-    
-    
 
     public void addRow(Object[] row) {
         DefaultTableModel mod = (DefaultTableModel) getModel();
@@ -106,5 +99,9 @@ public class CustomTable extends JTable {
         jp.setBackground(Color.WHITE);
         scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, jp);
         scroll.setBorder(new EmptyBorder(5, 10, 5, 10));
+    }
+    
+    public void show(){
+        setVisible(true);
     }
 }

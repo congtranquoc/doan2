@@ -1,29 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package models;
+
+package MVC.models;
 
 import event.EventTableAction;
 import java.text.DecimalFormat;
 import javax.swing.Icon;
 
-/**
- *
- * @author admin
- */
 public class ModelEmployees {
 
     Icon icon;
+    int empID;
     String fname;
     String lname;
     double salary;
     double bonus;
     String phone;
     String email;
-    String address;
+    int address;
     int partID;
 
+    public int getEmpID() {
+        return empID;
+    }
+
+    public void setEmpID(int empID) {
+        this.empID = empID;
+    }
+
+    
     public Icon getIcon() {
         return icon;
     }
@@ -80,11 +83,11 @@ public class ModelEmployees {
         this.email = email;
     }
 
-    public String getAddress() {
+    public int getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(int address) {
         this.address = address;
     }
 
@@ -98,14 +101,16 @@ public class ModelEmployees {
     
     
 
-    public ModelEmployees(Icon icon, String fname, String lname, double salary, double bonus, String phone, String email, String address) {
+    public ModelEmployees(Icon icon,int empID, String fname, String lname, double salary, double bonus, String phone, String email, int partId, int address) {
         this.icon = icon;
+        this.empID = empID;
         this.fname = fname;
         this.lname = lname;
         this.salary = salary;
         this.bonus = bonus;
         this.phone = phone;
         this.email = email;
+        this.partID = partId;
         this.address = address;
     }
 
@@ -115,6 +120,6 @@ public class ModelEmployees {
 
     public Object[] toRowTable(EventTableAction event) {
         DecimalFormat df = new DecimalFormat("$#, ##0.00");
-        return new Object[]{new ModelProfile(icon, fname), phone, email, address, new ModelAction(this, event)};
+        return new Object[]{new ModelProfile(icon, fname, lname), phone, email, address, new ModelAction(this, event)};
     }
 }

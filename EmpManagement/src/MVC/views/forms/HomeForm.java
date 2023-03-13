@@ -1,186 +1,33 @@
-package form;
+package MVC.views.forms;
 
-import dialog.MessageDialog;
-import event.EventTableAction;
+import MVC.controllers.EmployeesController;
 import icon.GoogleMaterialDesignIcons;
 import icon.IconFontSwing;
 import java.awt.Color;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import models.ModelCard;
-import models.ModelEmployees;
-import models.ModelNoticeBoard;
-import net.miginfocom.swing.MigLayout;
-import views.HomePage;
+import MVC.models.ModelCard;
+import MVC.models.ModelNoticeBoard;
+import dao.EmployeesDAO;
+import dao.EmployeesImpl;
 
 public class HomeForm extends javax.swing.JPanel {
 
-    private MigLayout layout;
+    private EmployeesDAO dao;
+    private EmployeesController empController;
 
     public HomeForm() {
         initComponents();
-        customTable1.fixTable(jScrollPane1);
+        empTable.fixTable(scrollEmp);
         setOpaque(false);
         initData();
     }
 
     private void initData() {
+        dao = new EmployeesImpl();
+        empController = new EmployeesController(empTable, dao);
+        empController.getAllEmployees();
         initCardData();
-        initNoticeBoard();
-        initTableData();
-    }
-
-    private void initTableData() {
-        EventTableAction event = new EventTableAction() {
-            @Override
-            public void delete(ModelEmployees model) {
-               showMessage("Are You Sure?");
-            }
-
-            @Override
-            public void update(ModelEmployees model) {
-               showMessage("Are You Sure?");
-            }
-        };
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-        customTable1.addRow(
-                new ModelEmployees(
-                        new ImageIcon(
-                                getClass().getResource("/resource/images_avatar.png")), 
-                        "Jonh", 
-                        "Jonh", 
-                        100000,
-                        30000, 
-                        "Java", 
-                        "Java", 
-                        "Java").toRowTable(event));
-
-    }
-    
-    private void showMessage(String message) {
-        MessageDialog obj = new MessageDialog(HomePage.getFrames()[0], true);
-        obj.showMessage(message);
-//        return obj.isOk();
+        initNoticeBoard();   
     }
 
     private void initCardData() {
@@ -208,14 +55,14 @@ public class HomeForm extends javax.swing.JPanel {
         cardPart = new components.Card();
         cardEmp = new components.Card();
         jPanel1 = new javax.swing.JPanel();
-        noticeBoard = new form.NoticeBoard();
+        noticeBoard = new MVC.views.forms.NoticeBoard();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        customTable1 = new utils.swing.CustomTable();
+        pnEmp = new javax.swing.JPanel();
+        lbOfTableEmp = new javax.swing.JLabel();
+        scrollEmp = new javax.swing.JScrollPane();
+        empTable = new MVC.views.EmployeesTableComponent();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1058, 800));
@@ -280,11 +127,13 @@ public class HomeForm extends javax.swing.JPanel {
                 .addComponent(noticeBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel5.setText("Employees");
-        jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+        pnEmp.setBackground(new java.awt.Color(255, 255, 255));
 
-        customTable1.setModel(new javax.swing.table.DefaultTableModel(
+        lbOfTableEmp.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lbOfTableEmp.setText("Employees");
+        lbOfTableEmp.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+
+        empTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -300,28 +149,28 @@ public class HomeForm extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(customTable1);
-        if (customTable1.getColumnModel().getColumnCount() > 0) {
-            customTable1.getColumnModel().getColumn(0).setPreferredWidth(150);
+        scrollEmp.setViewportView(empTable);
+        if (empTable.getColumnModel().getColumnCount() > 0) {
+            empTable.getColumnModel().getColumn(0).setPreferredWidth(150);
         }
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnEmpLayout = new javax.swing.GroupLayout(pnEmp);
+        pnEmp.setLayout(pnEmpLayout);
+        pnEmpLayout.setHorizontalGroup(
+            pnEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnEmpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(lbOfTableEmp)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+            .addComponent(scrollEmp)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnEmpLayout.setVerticalGroup(
+            pnEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnEmpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(lbOfTableEmp)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane1))
+                .addComponent(scrollEmp))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -343,7 +192,7 @@ public class HomeForm extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(cardEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -362,7 +211,7 @@ public class HomeForm extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -385,15 +234,15 @@ public class HomeForm extends javax.swing.JPanel {
     private components.Card cardGroup;
     private components.Card cardPart;
     private components.Card cardTeam;
-    private utils.swing.CustomTable customTable1;
+    private MVC.views.EmployeesTableComponent empTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private form.NoticeBoard noticeBoard;
+    private javax.swing.JLabel lbOfTableEmp;
+    private MVC.views.forms.NoticeBoard noticeBoard;
+    private javax.swing.JPanel pnEmp;
+    private javax.swing.JScrollPane scrollEmp;
     // End of variables declaration//GEN-END:variables
 }

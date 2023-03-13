@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import models.ModelAction;
+import MVC.models.ModelAction;
 
 public class ActionPanel extends javax.swing.JPanel {
 

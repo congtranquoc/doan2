@@ -1,4 +1,4 @@
-package views;
+package MVC.views;
 
 import event.EventLoginListener;
 import java.awt.Color;

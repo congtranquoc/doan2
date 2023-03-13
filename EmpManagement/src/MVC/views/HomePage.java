@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package views;
+package MVC.views;
 
 import components.Header;
-import form.MainForm;
+import MVC.views.forms.MainForm;
 import components.Menu;
 import event.EventMenuSelected;
-import form.HomeForm;
+import MVC.views.forms.HomeForm;
 import icon.GoogleMaterialDesignIcons;
 import icon.IconFontSwing;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import models.LoginModel;
+import MVC.models.LoginModel;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;

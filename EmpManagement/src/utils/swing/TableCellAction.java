@@ -6,7 +6,7 @@ import java.awt.Component;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
-import models.ModelAction;
+import MVC.models.ModelAction;
 
 public class TableCellAction extends DefaultCellEditor {
 

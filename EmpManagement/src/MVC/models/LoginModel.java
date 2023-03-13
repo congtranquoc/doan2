@@ -1,5 +1,5 @@
 
-package models;
+package MVC.models;
 
 
 public class LoginModel {

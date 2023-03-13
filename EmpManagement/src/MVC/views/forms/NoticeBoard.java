@@ -1,4 +1,4 @@
-package form;
+package MVC.views.forms;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,7 +7,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
-import models.ModelNoticeBoard;
+import MVC.models.ModelNoticeBoard;
 import net.miginfocom.swing.MigLayout;
 import utils.swing.ScrollBarCustom;
 

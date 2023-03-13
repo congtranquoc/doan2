@@ -1,7 +1,7 @@
 
 package event;
 
-import models.ModelEmployees;
+import MVC.models.ModelEmployees;
 
 public interface EventTableAction {
     public void delete(ModelEmployees model);

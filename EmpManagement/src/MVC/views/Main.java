@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package views;
+package MVC.views;
 
-import controllers.LoginController;
+import MVC.controllers.LoginController;
 import dao.LoginDAO;
 import dao.LoginImpl;
 import javax.swing.SwingUtilities;
@@ -47,7 +47,7 @@ public class Main {
         /* Create and display the form */
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                view.setVisible(true);
+                controller.showView();
             }
         });
     }

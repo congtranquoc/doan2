@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package models;
+package MVC.models;
 
 import javax.swing.Icon;
 
@@ -13,7 +13,8 @@ import javax.swing.Icon;
 public class ModelProfile {
 
     private Icon icon;
-    private String name;
+    private String fname;
+    private String lname;
 
     public Icon getIcon() {
         return icon;
@@ -23,18 +24,29 @@ public class ModelProfile {
         this.icon = icon;
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public ModelProfile(Icon icon, String name) {
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public ModelProfile(Icon icon, String fname, String lname) {
         this.icon = icon;
-        this.name = name;
+        this.fname = fname;
+        this.lname = lname;
     }
+
+    
 
     public ModelProfile() {
     }
